@@ -3,13 +3,21 @@ pipeline {
     stages {
         stage('Fetch from Git') {
             steps {
-                echo 'Successfully pulled Jenkinsfile from GitHub!'
+                echo 'Proof: This stage is running from the GitHub Jenkinsfile!'
             }
         }
         stage('Automated Build') {
             steps {
-                echo 'Running build steps from SCM...'
+                echo 'Building the project...'
             }
+        }
+    }
+    post { 
+        success { 
+            echo 'SUCCESS: The build finished perfectly!' 
+        }
+        failure { 
+            echo 'FAILURE: Something went wrong in the pipeline.' 
         }
     }
 }
